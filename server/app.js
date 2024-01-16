@@ -20,6 +20,11 @@ io.on("connection", (socket)=> {
         console.log(`User ID ${socket.id} disconnected`);
     })
 
+    socket.on("msz", ({message,room})=> {
+        console.log(message);
+        socket.to(room).emit("recMsz", message);
+    })
+
 
 });
 
